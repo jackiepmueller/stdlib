@@ -75,7 +75,7 @@ function Game.print_all(msg, condition)
     end
 end
 
---- Gets or sets data in the global variable.
+--- Gets or sets data in the storage variable.
 -- @tparam string sub_table the name of the table to use to store data.
 -- @tparam[opt] mixed index an optional index to use for the sub_table
 -- @tparam mixed key the key to store the data in

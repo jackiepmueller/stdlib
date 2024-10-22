@@ -47,7 +47,7 @@ end
 --- Get `game.forces[name]` & `storage.forces[name]`, or create `storage.forces[name]` if it doesn't exist.
 -- @tparam string|LuaForce force the force to get data for
 -- @treturn LuaForce the force instance
--- @treturn table the force's global data
+-- @treturn table the force's storage data
 -- @usage
 -- local Force = require('__stdlib2__/stdlib/event/force')
 -- local force_name, force_data = Force.get("player")

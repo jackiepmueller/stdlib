@@ -43,7 +43,7 @@ end
 --- Get `game.players[index]` & `storage.players[index]`, or create `storage.players[index]` if it doesn't exist.
 -- @tparam number|string|LuaPlayer player the player index to get data for
 -- @treturn LuaPlayer the player instance
--- @treturn table the player's global data
+-- @treturn table the player's storage data
 -- @usage
 -- local Player = require('__stdlib2__/stdlib/event/player')
 -- local player, player_data = Player.get(event.player_index)
@@ -54,7 +54,7 @@ end
 
 --- Get the players saved data table. Creates it if it doesn't exsist.
 -- @tparam number index The player index to get data for
--- @treturn table the player's global data
+-- @treturn table the player's storage data
 function Player.pdata(index)
     return storage.players and storage.players[index] or Player.init(index)
 end

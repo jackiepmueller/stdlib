@@ -147,7 +147,7 @@ function Changes.dump_data()
                 'return ' .. inspect(Changes[change_type], { longkeys = true, arraykeys = true }))
         end
     end
-    game.write_file(Changes.get_file_path('Changes/global.lua'), 'return ' .. inspect(global._changes or nil, { longkeys = true, arraykeys = true }))
+    game.write_file(Changes.get_file_path('Changes/global.lua'), 'return ' .. inspect(storage._changes or nil, { longkeys = true, arraykeys = true }))
 end
 
 return Changes
