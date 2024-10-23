@@ -87,7 +87,7 @@ function quickstart.on_player_created(event)
             local grid = player.character.grid
             if grid then
                 for _, eq in pairs(QS.get('equipment', { 'fusion-reactor-equipment' })) do
-                    if game.equipment_prototypes[eq] then
+                    if prototypes.equipment[eq] then
                         grid.put { name = eq }
                     end
                 end
@@ -219,11 +219,11 @@ function quickstart.on_player_created(event)
         end
 
         if QS.get('setup_power', false) then
-            if game.entity_prototypes['debug-energy-interface'] then
+            if prototypes.entity['debug-energy-interface'] then
                 local es = surface.create_entity { name = 'debug-energy-interface', position = { 0, 0 }, force = force, raise_built = true }
                 es.destructible = false
             end
-            if game.entity_prototypes['debug-substation'] then
+            if prototypes.entity['debug-substation'] then
                 local sb = surface.create_entity { name = 'debug-substation', position = { 0, 0 }, force = force, raise_built = true }
                 sb.destructible = false
             end
