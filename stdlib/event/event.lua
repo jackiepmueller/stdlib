@@ -51,7 +51,7 @@ Event.script = {
     on_load = script.on_load,
     on_configuration_changed = script.on_configuration_changed,
     generate_event_name = script.generate_event_name,
-    get_event_handler = script.get_event_handler
+    get_event_handler = script.get_event_handler,
 }
 
 local Type = require('__stdlib__/stdlib/utils/type')
@@ -66,11 +66,6 @@ if not config.skip_script_protections then -- Protections for post and pre regis
             error('Detected attempt to add the STDLIB event module after using script.on_event')
         end
     end
-    --for name in pairs(Event.script) do
-    --    _G.script[name] = function()
-    --        error('Detected attempt to register an event using script.' .. name .. ' while using the STDLIB event system ')
-    --    end
-    --end
 end
 
 local bootstrap_events = {
