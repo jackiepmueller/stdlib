@@ -1,6 +1,6 @@
 --- Surface global creation.
--- <p>All surfaces will be added to the `global.surfaces` table.
--- <p>This modules events should be registered after any other Init functions but before any scripts needing `global.surfaces`.
+-- <p>All surfaces will be added to the `storage.surfaces` table.
+-- <p>This modules events should be registered after any other Init functions but before any scripts needing `storage.surfaces`.
 -- <p>This modules can register the following events:
 -- @module Event.Surface
 -- @usage

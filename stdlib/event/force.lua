@@ -99,7 +99,7 @@ end
 
 function Force.dump_data()
     game.write_file(Force.get_file_path('Force/force_data.lua'), 'return ' .. inspect(Force._new_force_data, { longkeys = true, arraykeys = true }))
-    game.write_file(Force.get_file_path('Force/global.lua'), 'return ' .. inspect(global.forces or nil, { longkeys = true, arraykeys = true }))
+    game.write_file(Force.get_file_path('Force/storage.lua'), 'return ' .. inspect(storage.forces or nil, { longkeys = true, arraykeys = true }))
 end
 
 --- When forces are merged, just remove the original forces data

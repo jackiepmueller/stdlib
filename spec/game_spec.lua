@@ -21,12 +21,12 @@ describe("Game Spec",
                     end
                 }
                 _G.game = { players = { }, connected_players = { }, forces = { } }
-                _G.global = { players = { }, forces = { }}
+                _G.storage = { players = { }, forces = { }}
 
                 setmetatable(game.players, _mt)
-                setmetatable(global.players, _mt)
+                setmetatable(storage.players, _mt)
                 setmetatable(game.forces, _mt)
-                setmetatable(global.forces, _mt)
+                setmetatable(storage.forces, _mt)
             end
         )
 

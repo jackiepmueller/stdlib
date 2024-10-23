@@ -20,7 +20,7 @@ describe('Chunk Spec', function()
     end)
 
     it('should verify getting and setting data', function()
-        _G.global = {}
+        _G.storage = {}
         _G.game = { surfaces = { nauvis = { index = 1, __self = 'userdata', valid = true } } }
 
         local chunk_pos = { x = 4, y = -6 }
