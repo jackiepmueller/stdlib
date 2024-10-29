@@ -2,20 +2,20 @@
 -- This module adds player helper functions, it does not automatically register events unless Player.register_events() is called
 -- @module Event.Player
 -- @usage
--- local Player = require('__stdlib__/stdlib/event/player').register_events()
+-- local Player = require('__stdlib2__/stdlib/event/player').register_events()
 -- -- The fist time this is required it will register player creation events
-local Event = require('__stdlib__/stdlib/event/event')
+local Event = require('__stdlib2__/stdlib/event/event')
 
 local Player = {
     __class = 'Player',
-    __index = require('__stdlib__/stdlib/core'),
+    __index = require('__stdlib2__/stdlib/core'),
     _new_player_data = {}
 }
 setmetatable(Player, Player)
 
-local Game = require('__stdlib__/stdlib/game')
-local table = require('__stdlib__/stdlib/utils/table')
-local merge_additional_data = require('__stdlib__/stdlib/event/modules/merge_data')
+local Game = require('__stdlib2__/stdlib/game')
+local table = require('__stdlib2__/stdlib/utils/table')
+local merge_additional_data = require('__stdlib2__/stdlib/event/modules/merge_data')
 local assert, type = assert, type
 local inspect = _ENV.inspect
 
@@ -43,9 +43,9 @@ end
 --- Get `game.players[index]` & `storage.players[index]`, or create `storage.players[index]` if it doesn't exist.
 -- @tparam number|string|LuaPlayer player the player index to get data for
 -- @treturn LuaPlayer the player instance
--- @treturn table the player's storage data
+-- @treturn table the player's global data
 -- @usage
--- local Player = require('__stdlib__/stdlib/event/player')
+-- local Player = require('__stdlib2__/stdlib/event/player')
 -- local player, player_data = Player.get(event.player_index)
 function Player.get(player)
     player = Game.get_player(player)
@@ -54,7 +54,7 @@ end
 
 --- Get the players saved data table. Creates it if it doesn't exsist.
 -- @tparam number index The player index to get data for
--- @treturn table the player's storage data
+-- @treturn table the player's global data
 function Player.pdata(index)
     return storage.players and storage.players[index] or Player.init(index)
 end
@@ -122,7 +122,7 @@ end
 
 function Player.dump_data()
     game.write_file(Player.get_file_path('Player/player_data.lua'), 'return ' .. inspect(Player._new_player_data, { longkeys = true, arraykeys = true }))
-    game.write_file(Player.get_file_path('Player/global.lua'), 'return ' .. inspect(global.players or nil, { longkeys = true, arraykeys = true }))
+    game.write_file(Player.get_file_path('Player/storage.lua'), 'return ' .. inspect(storage.players or nil, { longkeys = true, arraykeys = true }))
 end
 
 function Player.register_init()

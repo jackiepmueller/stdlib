@@ -1,10 +1,10 @@
 --- The game module.
 -- @module Game
--- @usage local Game = require('__stdlib__/stdlib/game')
+-- @usage local Game = require('__stdlib2__/stdlib/game')
 
 local Game = {
     __class = 'Game',
-    __index = require('__stdlib__/stdlib/core')
+    __index = require('__stdlib2__/stdlib/core')
 }
 setmetatable(Game, Game)
 local inspect = _ENV.inspect
@@ -75,7 +75,7 @@ function Game.print_all(msg, condition)
     end
 end
 
---- Gets or sets data in the storage variable.
+--- Gets or sets data in the global variable.
 -- @tparam string sub_table the name of the table to use to store data.
 -- @tparam[opt] mixed index an optional index to use for the sub_table
 -- @tparam mixed key the key to store the data in

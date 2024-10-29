@@ -1,10 +1,10 @@
 --- Tools for working with entities.
 -- @module Entity.Entity
--- @usage local Entity = require('__stdlib__/stdlib/entity/entity')
+-- @usage local Entity = require('__stdlib2__/stdlib/entity/entity')
 
 local Entity = {
     __class = 'Entity',
-    __index = require('__stdlib__/stdlib/core')
+    __index = require('__stdlib2__/stdlib/core')
 }
 setmetatable(Entity, Entity)
 
@@ -26,7 +26,7 @@ function Entity.has(entity, field_name)
 end
 
 --- Gets the user data that is associated with an entity.
--- The user data is stored in the storage object and it persists between loads.
+-- The user data is stored in the global object and it persists between loads.
 --> The user data will be removed from an entity when the entity becomes invalid.
 -- @tparam LuaEntity entity the entity to look up
 -- @treturn ?|nil|Mixed the user data, or nil if no data exists for the entity
@@ -56,7 +56,7 @@ function Entity.get_data(entity)
 end
 
 --- Associates the user data to an entity.
--- The user data will be stored in the storage object and it will persist between loads.
+-- The user data will be stored in the global object and it will persist between loads.
 --> The user data will be removed from an entity when the entity becomes invalid.
 -- @tparam LuaEntity entity the entity with which to associate the user data
 -- @tparam ?|nil|Mixed data the data to set, or nil to delete the data associated with the entity
