@@ -138,7 +138,7 @@ function Logger.new(log_name, debug_mode, options)
     function Log.write()
         if _G.game and table.size(Log.buffer) > 0 then
             Log.last_written = game.tick
-            game.write_file(Log.file_name, table.concat(Log.buffer), Log.ever_written)
+            helpers.write_file(Log.file_name, table.concat(Log.buffer), Log.ever_written)
             Log.buffer = {}
             Log.ever_written = true
         end
