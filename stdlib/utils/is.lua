@@ -353,7 +353,7 @@ M.alphanumword = M.AlphanumWord
 -- @tparam LuaObject var The variable to check
 -- @treturn mixed the var if this is an LuaObject
 function M.Object(var)
-    return M.Table(var) and var.__self and var
+    return M.Userdata(var) and var
 end
 M.object = M.Object
 
