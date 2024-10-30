@@ -176,16 +176,12 @@ function Data:copy(new_name, result, opts)
             copy.placeable_by.item = result
         end
 
-        -- For recipes, should also to check results!!
+        -- For recipes, "result" is no longer in use
         if copy.type == 'recipe' then
-            if copy.normal and copy.normal.result then
-                copy.normal.result = new_name
-                copy.expensive.result = new_name
-            else
-                if copy.result then
-                    copy.result = new_name
-                end
-            end
+            -- recipes with more than 1 result are too ambiguous to replace
+            if #copy.results == 1 then 
+                copy.results[1].name = result
+			end
         end
 
         return self(copy, nil, opts or self.options)
