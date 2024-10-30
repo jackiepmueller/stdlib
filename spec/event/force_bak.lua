@@ -1,7 +1,7 @@
 require('spec/setup/busted')()
 
-local Event = require('__stdlib__/stdlib/event/event')
-local table = require('__stdlib__/stdlib/utils/table').overwrite_global()
+local Event = require('__stdlib2__/stdlib/event/event')
+local table = require('__stdlib2__/stdlib/utils/table').overwrite_global()
 
 describe("Force",
     function()
@@ -42,14 +42,14 @@ describe("Force",
 
         it("should allow itself to be loaded at startup time",
             function()
-                require('__stdlib__/stdlib/event/force').register_events()
+                require('__stdlib2__/stdlib/event/force').register_events()
             end
         )
 
         it("should register handlers for creation events",
             function()
                 --local register_spy = spy.on(_G.Event, "register")
-                require('__stdlib__/stdlib/event/force').register_events()
+                require('__stdlib2__/stdlib/event/force').register_events()
                 --local match = require('luassert.match'))
                 --local events = {defines.events.on_force_created, Event.core_events.init, Event.core_events.configuration_changed}
                 --assert.spy(register_spy).was_called_with(events, match.is_function())
@@ -65,7 +65,7 @@ describe("Force",
                 for _, force_name in ipairs(force_names) do
                     game.forces[force_name] = { index = force_name, name = force_name }
                 end
-                require('__stdlib__/stdlib/event/force').register_events()
+                require('__stdlib2__/stdlib/event/force').register_events()
                 Event.dispatch({name = Event.core_events.init})
                 for _, force_name in ipairs(storage.forces) do
                     assert.same(game.forces[force_name].name, storage.forces[force_name].name)
@@ -80,7 +80,7 @@ describe("Force",
                 for _, force_name in ipairs(force_names) do
                     game.forces[force_name] = { index = force_name, name = force_name }
                 end
-                require('__stdlib__/stdlib/event/force').register_events()
+                require('__stdlib2__/stdlib/event/force').register_events()
                 Event.dispatch({name = Event.core_events.configuration_changed, test = "TEST"})
                 for _, force_name in ipairs(storage.forces) do
                     assert.same(game.forces[force_name].name, storage.forces[force_name].name)
@@ -102,7 +102,7 @@ describe("Force",
 
         it(".get should retrieve forces from game.forces and storage.forces",
             function()
-                local Force = require('__stdlib__/stdlib/event/force').register_events()
+                local Force = require('__stdlib2__/stdlib/event/force').register_events()
                 local force_names = {"ForceOne", "ForceTwo", "ForceThree"}
                 for _, force_name in ipairs(force_names) do
                     game.forces[force_name] = { index = force_name, name = force_name }
@@ -120,7 +120,7 @@ describe("Force",
 
         it(".get should add a force into storage.forces if the force is in game.forces but does not exist in storage.forces",
             function()
-                local Force = require('__stdlib__/stdlib/event/force').register_events()
+                local Force = require('__stdlib2__/stdlib/event/force').register_events()
                 local force_names = {"ForceOne", "ForceTwo", "ForceThree"}
                 for _, force_name in ipairs(force_names) do
                     game.forces[force_name] = { index = force_name, name = force_name }
@@ -141,7 +141,7 @@ describe("Force",
                 for _, force_name in ipairs(force_names) do
                     storage.forces[force_name] = { index = force_name, name = force_name, data = "Data" .. force_name }
                 end
-                local Force = require('__stdlib__/stdlib/event/force').register_events()
+                local Force = require('__stdlib2__/stdlib/event/force').register_events()
                 local data = {a = "abc", b = "def"}
                 Force.add_data_all(data)
                 for _, force_name in ipairs(force_names) do
@@ -153,7 +153,7 @@ describe("Force",
 
         it(".init should initialize storage.forces",
             function()
-                local Force = require('__stdlib__/stdlib/event/force').register_events()
+                local Force = require('__stdlib2__/stdlib/event/force').register_events()
                 local force_names = {"ForceOne", "ForceTwo", "ForceThree"}
                 for _, force_name in ipairs(force_names) do
                     game.forces[force_name] = { index = force_name, name = force_name }
@@ -169,7 +169,7 @@ describe("Force",
 
         it(".init should re-init forces",
             function()
-                local Force = require('__stdlib__/stdlib/event/force').register_events()
+                local Force = require('__stdlib2__/stdlib/event/force').register_events()
                 local force_names = {"ForceOne", "ForceTwo", "ForceThree", "ForceFour"}
                 for _, force_name in ipairs(force_names) do
                     game.forces[force_name] = { index = force_name, name = force_name }
@@ -197,7 +197,7 @@ describe("Force",
 
         it(".init should iterate all game.forces[index] and initialize storage.forces[index] when nil is passed",
             function()
-                local Force = require('__stdlib__/stdlib/event/force').register_events()
+                local Force = require('__stdlib2__/stdlib/event/force').register_events()
                 local force_names = {"ForceOne", "ForceTwo", "ForceThree"}
                 for _, force_name in ipairs(force_names) do
                     game.forces[force_name] = { index = force_name, name = force_name }
@@ -213,7 +213,7 @@ describe("Force",
 
         it(".init should iterate all game.forces[index] and re-init storage.forces[index] when event is nil and overwrite is true",
             function()
-                local Force = require('__stdlib__/stdlib/event/force').register_events()
+                local Force = require('__stdlib2__/stdlib/event/force').register_events()
                 local force_names = {"ForceOne", "ForceTwo", "ForceThree"}
                 for _, force_name in ipairs(force_names) do
                     game.forces[force_name] = { index = force_name, name = force_name }
@@ -236,7 +236,7 @@ describe("Force",
             --If a force isn"t valid then it won"t add it to global table
             --Additionally game.forces won"t return invalid forces (TBD)
             function()
-                local Force = require('__stdlib__/stdlib/event/force').register_events()
+                local Force = require('__stdlib2__/stdlib/event/force').register_events()
                 local force_names = {"ForceOne", "ForceTwo", "ForceThree"}
                 for _, force_name in ipairs(force_names) do
                     game.forces[force_name] = { index = force_name, name = force_name}

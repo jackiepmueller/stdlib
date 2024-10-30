@@ -1,7 +1,7 @@
 require('spec/setup/busted')()
 
-local Game = require('__stdlib__/stdlib/game')
-local table = require('__stdlib__/stdlib/utils/table')
+local Game = require('__stdlib2__/stdlib/game')
+local table = require('__stdlib2__/stdlib/utils/table')
 
 describe("Game Spec",
     function()

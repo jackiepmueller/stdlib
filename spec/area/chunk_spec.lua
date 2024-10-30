@@ -1,6 +1,6 @@
 require('spec/setup/busted')()
 
-local Chunk = require('__stdlib__/stdlib/area/chunk')
+local Chunk = require('__stdlib2__/stdlib/area/chunk')
 local C = Chunk
 
 describe('Chunk Spec', function()

@@ -1,6 +1,6 @@
 require('spec/setup/busted')()
 
-local Entity = require('__stdlib__/stdlib/entity/entity')
+local Entity = require('__stdlib2__/stdlib/entity/entity')
 
 describe('Entity', function()
     it('an entity should be frozen', function()

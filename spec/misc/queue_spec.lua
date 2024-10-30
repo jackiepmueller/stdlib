@@ -1,7 +1,7 @@
 require('spec/setup/busted')()
 
-local Queue = require('__stdlib__/stdlib/misc/queue')
-local table = require('__stdlib__/stdlib/utils/table')
+local Queue = require('__stdlib2__/stdlib/misc/queue')
+local table = require('__stdlib2__/stdlib/utils/table')
 
 describe('Queue', function()
     local queue1

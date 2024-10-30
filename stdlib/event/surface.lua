@@ -4,18 +4,18 @@
 -- <p>This modules can register the following events:
 -- @module Event.Surface
 -- @usage
--- local surface = require('__stdlib__/stdlib/event/surface').register_events()
+-- local surface = require('__stdlib2__/stdlib/event/surface').register_events()
 
-local Event = require('__stdlib__/stdlib/event/event')
+local Event = require('__stdlib2__/stdlib/event/event')
 
 local Surface = {
     __class = 'Surface',
     _new_surface_data = {}
 }
-setmetatable(Surface, require('__stdlib__/stdlib/core'))
+setmetatable(Surface, require('__stdlib2__/stdlib/core'))
 local inspect = _ENV.inspect
 
-local merge_additional_data = require('__stdlib__/stdlib/event/modules/merge_data')
+local merge_additional_data = require('__stdlib2__/stdlib/event/modules/merge_data')
 
 local function new(index)
     local surface = game.surfaces[index]

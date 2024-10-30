@@ -1,6 +1,6 @@
 require('spec/setup/busted')()
 
-local Tile = require('__stdlib__/stdlib/area/tile')
+local Tile = require('__stdlib2__/stdlib/area/tile')
 
 describe('Tile Spec', function()
     it('should give the correct tile coordinates for a position', function()

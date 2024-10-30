@@ -1,11 +1,11 @@
 --- Functions for working with directions and orientations.
 -- @module Area.Direction
--- @usage local Direction = require('__stdlib__/stdlib/area/direction')
+-- @usage local Direction = require('__stdlib2__/stdlib/area/direction')
 -- @see defines.direction
 
 local Direction = {
     __class = 'Direction',
-    __index = require('__stdlib__/stdlib/core')
+    __index = require('__stdlib2__/stdlib/core')
 }
 setmetatable(Direction, Direction)
 
@@ -88,7 +88,7 @@ end
 
 -- Deprecated
 do
-    local Orientation = require('__stdlib__/stdlib/area/orientation')
+    local Orientation = require('__stdlib2__/stdlib/area/orientation')
     Direction.opposite_direction = Direction.opposite
     Direction.direction_to_orientation = Direction.to_orientation
 

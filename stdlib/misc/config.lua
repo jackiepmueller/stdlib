@@ -1,6 +1,6 @@
 --- For working with mod configurations.
 -- @module Misc.Config
--- @usage require('__stdlib__/stdlib/config/config')
+-- @usage require('__stdlib2__/stdlib/config/config')
 
 ---
 -- @tfield function new
@@ -11,11 +11,11 @@
 -- @table Config
 local M = {
     __class = 'Config',
-    __index = require('__stdlib__/stdlib/core')
+    __index = require('__stdlib2__/stdlib/core')
 }
 setmetatable(M, M)
-local table = require('__stdlib__/stdlib/utils/table')
-local string = require('__stdlib__/stdlib/utils/string')
+local table = require('__stdlib2__/stdlib/utils/table')
+local string = require('__stdlib2__/stdlib/utils/string')
 
 -----------------------------------------------------------------------
 --Setup repeated code for use in sub functions here

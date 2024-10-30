@@ -6,14 +6,14 @@
 
 local Trains = {
     __class = 'Trains',
-    __index = require('__stdlib__/stdlib/core')
+    __index = require('__stdlib2__/stdlib/core')
 }
 setmetatable(Trains, Trains)
 
-local Event = require('__stdlib__/stdlib/event/event')
-local Surface = require('__stdlib__/stdlib/area/surface')
-local Entity = require('__stdlib__/stdlib/entity/entity')
-local table = require('__stdlib__/stdlib/utils/table')
+local Event = require('__stdlib2__/stdlib/event/event')
+local Surface = require('__stdlib2__/stdlib/area/surface')
+local Entity = require('__stdlib2__/stdlib/entity/entity')
+local table = require('__stdlib2__/stdlib/utils/table')
 
 --- This event fires when a train's ID changes.
 -- <p>The train ID is a property of the main locomotive,

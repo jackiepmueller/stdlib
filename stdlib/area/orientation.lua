@@ -1,10 +1,10 @@
 --- Functions for working with orientations.
 -- @module Area.Orientation
--- @usage local Orientation = require('__stdlib__/stdlib/area/orientation')
+-- @usage local Orientation = require('__stdlib2__/stdlib/area/orientation')
 
 local Orientation = {
     __class = 'Orientation',
-    __index = require('__stdlib__/stdlib/core'),
+    __index = require('__stdlib2__/stdlib/core'),
 }
 setmetatable(Orientation, Orientation)
 
