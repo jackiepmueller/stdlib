@@ -69,7 +69,20 @@ local function remove_ingredient(ingredients, name)
     name = name.name
     for i, ingredient in pairs(ingredients or {}) do
         if ingredient[1] == name or ingredient.name == name then
-            ingredients[i] = nil
+            table.remove(ingredients, i) -- can no longer set ingredient to nil
+            return true
+        end
+    end
+end
+
+--- Remove a result from an results table. (near duplicate of remove_ingredient)
+-- @tparam table results
+-- @tparam string name Name of the result to remove
+local function remove_result(results, name)
+    name = name.name
+    for i, result in pairs(results or {}) do
+        if result[1] == name or result.name == name then
+            table.remove(results, i)
             return true
         end
     end
@@ -360,19 +373,15 @@ end
 -- @tparam string|Concepts.product normal
 -- @tparam[opt] string|Concepts.product|boolean expensive
 -- @tparam[opt] string main_product
-function Recipe:add_result(normal, expensive, main_product)
+function Recipe:add_result(result_name, expensive, main_product)
     if self:is_valid() then
-        normal, expensive = get_difficulties(normal, expensive)
-        self:convert_results()
-        self:set_main_product(main_product, normal, expensive)
-
-        -- if self.normal then
-        --     if normal then
-        --     end
-        --     if expensive then
-        --     end
-        -- elseif normal then
-        -- end
+        if self.results then
+            result_name = format(result_name)
+            table.insert(self.results,result_name)
+            if main_product then
+                self.main_product = main_product
+            end
+        end
     end
     return self
 end
@@ -381,44 +390,32 @@ end
 -- @tparam[opt] string|Concepts.product normal
 -- @tparam[opt] string|Concepts.product|boolean expensive
 -- @tparam[opt] string main_product new main_product to use
-function Recipe:remove_result(normal, expensive, main_product)
+function Recipe:remove_result(result_name, expensive, main_product)
     if self:is_valid() then
-        normal, expensive = get_difficulties(normal, expensive)
-        self:convert_results()
-        self:set_main_product(main_product, normal, expensive)
-
-        -- if self.normal then
-        --     if normal then
-        --     end
-        --     if expensive then
-        --     end
-        -- elseif normal then
-        -- end
+        if self.results then
+            remove_result(self.results,result_name)
+            if main_product then
+                self.main_product = main_product
+            end
+        end
     end
     return self
 end
 
 --- Remove a product from results, converts if needed.
--- @tparam string|Concepts.product result_name
--- @tparam[opt] string|Concepts.product normal
+-- @tparam string|Concepts.product replace_name the result to be replaced
+-- @tparam[opt] string|Concepts.product new_result the new result to be added
 -- @tparam[opt] string|Concepts.product|boolean expensive
 -- @tparam[opt] string main_product
-function Recipe:replace_result(result_name, normal, expensive, main_product)
-    if self:is_valid() and normal or expensive then
-        result_name = format(result_name)
-        if result_name then
-            normal, expensive = get_difficulties(normal, expensive)
-            self:convert_results()
-            self:remove_result(result_name, expensive and result_name)
-            self:set_main_product(main_product, normal, expensive)
-
-            -- if self.normal then
-            --     if normal then
-            --     end
-            --     if expensive then
-            --     end
-            -- elseif normal then
-            -- end
+function Recipe:replace_result(replace_name, new_result, expensive, main_product)
+    if self:is_valid() then
+        new_result = format(new_result)
+        if new_result then
+            self:remove_result(replace_name)
+            self:add_result(new_result)
+            if main_product then
+                self.main_product = main_product
+            end
         end
     end
     return self
